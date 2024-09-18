@@ -6,13 +6,9 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
-<<<<<<< HEAD
-* I'm that guy. Im him. Aarshdeep The Him Vandal
-=======
 * Hi, my name is Ravneet! I love to code, hike, and I am a start wars fan.
->>>>>>> 840469407a153a46dbe9903cfc10d212813783c5
 * ...
-* ...
+* Hi, my name is Aarshdeep! I'm that guy
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
