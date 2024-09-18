@@ -6,18 +6,9 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
-<<<<<<< HEAD
-* ...
-* ...Hello, my name is Nick. I play chess sometimes.
-=======
 * Hi, my name is Ravneet! I love to code, hike, and I am a start wars fan.
-* ...
-<<<<<<< HEAD
->>>>>>> 840469407a153a46dbe9903cfc10d212813783c5
-* ...
-=======
+* Hello, my name is Nick. I play chess sometimes.
 * Hi, my name is Aarshdeep! I'm that guy
->>>>>>> b66af264f728f7e821ece42b245930ef09dacd95
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
