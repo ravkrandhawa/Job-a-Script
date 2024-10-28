@@ -36,43 +36,31 @@
 </head>
 
 <body>
-
-    <!--This is where the nav bar goes. This nav bar is supposed to be the one before login-->
-    <nav id="navbarPlaceholder"></nav>
-
     <!------------------------------>
     <!-- Your HTML Layout go here -->
+    <!------------------------------>
 
-      <div class="px-4 py-5 my-5 text-center">
-        <img class="d-block mx-auto mb-4" src="./images/JavaScript-logo.png" alt="" width="72" height="57">
-        <h1 class="display-5 fw-bold">Welcome to Job-a-Script!</h1>
-        <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">Optimize your job search and connect with industry professionals.</p>
-            <h2>Tech starts here.</h2>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <a href="login.html">
-                    <button type="button" class="btn btn-info btn-lg px-4 gap-3">Login/Signup</button>
-                </a>
-            </div>
-        </div>
+    <!-- our own navbar goes here -->
+    <nav id="navbarPlaceholder"></nav>
+
+    <!-- the body of your page goes here -->
+    <!-- stuff -->
+    <div class="container">
+        <h1>Let's Login!</h1>
     </div>
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
 
     <!-- our own footer goes here-->
     <nav id="footerPlaceholder"></nav>
 
-
-    <!------------------------------>
-    <!-- Stuff for body goes here -->
-
-
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
-
-    <!-- Link to scripts of your own -->
     <script src="./scripts/firebaseAPI_BBY06.js"></script>
     <script src="./scripts/skeleton.js"></script>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/authentication.js"></script>
 
 </body>
 
