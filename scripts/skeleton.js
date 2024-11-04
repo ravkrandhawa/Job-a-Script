@@ -15,5 +15,7 @@ function loadSkeleton() {
             console.log($('#navbarPlaceholder').load('./nav_before_login.html'));
         }
     });
+
+    console.log($('#footerPlaceholder').load("footer.html")); 
 }
 loadSkeleton(); //invoke the function
