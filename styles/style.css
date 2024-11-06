@@ -24,8 +24,13 @@
     align-items: center;
 }
 
-.card :hover {
+a {
+    text-decoration: none; 
+}
+
+.main-menu-selection :hover {
     color: green; 
+    text-decoration: none; 
 }
 
 img[alt=logo] {
