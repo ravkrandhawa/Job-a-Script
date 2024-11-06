@@ -1,3 +1,4 @@
+/* MAIN.HTML */
 #container {
     display: grid; 
     grid-template-rows: 5vh 10vh 15vh 5vh; 
@@ -31,3 +32,39 @@ img[alt=logo] {
     height: 300px; 
     width: 300px; 
 }
+
+/* PROFILE.HTML */ 
+#profile-container {
+    display: grid; 
+    grid-template-rows: 0vh 20vh 5vh 60vh 1vh;
+    grid-template-columns: 25vw 25vw 25vw 25vw; 
+}
+
+#profile-banner {
+    grid-row: 2 / span 1; 
+    grid-column: 1 / span 4; 
+    background-color: yellow; 
+    background-image: url(/images/cityb&w.jpg); 
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#profile-info { 
+    grid-row: 4 / span 1; 
+    grid-column: 2 / span 2; 
+
+}
+
+#profile-info h1 {
+    padding-top: 10px; 
+    text-align: center; 
+}
+
+#profile-icon {
+    display: flex; 
+    height: 160px; 
+    justify-self: center; 
+    align-items: center;
+    margin-top: 25px; 
+}
+
