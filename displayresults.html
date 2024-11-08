@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data from Server</title>
+</head>
+<body>
+    <div id="content"></div>
+    <script>
+        // Fetch data from the Node.js server
+        fetch('http://127.0.0.1:8000')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // Logs the data to the console
+                
+                // Display the data on the page
+                const contentDiv = document.getElementById('content');
+                
+                // Construct the info to display (title and company)
+                message = "";
+                data.forEach(doc =>{
+                    console.log(doc.title);
+                    message = message + "<p> " + doc.title + " " + 
+                        doc.company_name + "</p>"
+                })
+                
+                // Display the final string which includes all the jobs
+                contentDiv.innerHTML = message;
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
+
