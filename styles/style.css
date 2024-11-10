@@ -73,3 +73,45 @@ img[alt=logo] {
     margin-top: 25px; 
 }
 
+/* DISPLAYRESULTS.HTML */ 
+
+#results-container {
+    display: grid; 
+    grid-template-rows: 0vh 25vh 80vh 1vh;
+    grid-template-columns: 25vw 25vw 25vw 25vw; 
+}
+
+#results-banner {
+    grid-row: 2 / span 1; 
+    grid-column: 1 / span 4; 
+}
+
+#content {
+    grid-row: 3 / span 1; 
+    grid-column: 2 / span 2; 
+}
+
+#results-icon {
+    grid-row: 2 / span 1; 
+    grid-column: 2 / span 2; 
+    display: flex; 
+}
+
+#results-icon img {
+    justify-self: left; 
+    align-self: center; 
+}
+
+#results-icon p {
+    justify-self: right; 
+    align-self: center; 
+}
+
+img {
+    height: 100px; 
+    width: 100px; 
+}
+
+
+
+
