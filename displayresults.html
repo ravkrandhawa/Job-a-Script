@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetch Data from Server</title>
+    <title>Results</title>
     <link rel="stylesheet" href="./styles/style.css"> <!-- Bootstrap Library CSS CDN go here -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -38,7 +38,7 @@
         </div>
         <div id="results-icon">
             <img alt="profile-icon" src="./images/profile-user.png">
-            <p>Results Below!</p>
+            <span>Hi Ravneet,</user><br/>Your results are here.</span>
         </div>
         <div id="content">
 
@@ -56,12 +56,21 @@
                 const contentDiv = document.getElementById('content');
 
                 // Construct the info to display (title and company)
+                // message = "";
+                // data.forEach(doc => {
+                //     console.log(doc.title);
+                //     message = message + "<p> " + doc.title + " " +
+                //         doc.company_name + " " + "<a href=" + doc.share_link 
+                //          + ">link</a>" + " </p>"
+                // })
+
                 message = "";
                 data.forEach(doc => {
                     console.log(doc.title);
-                    message = message + "<p> " + doc.title + " " +
-                        doc.company_name + " " + "<a href=" + doc.share_link 
-                         + ">link</a>" + " </p>"
+                    message = message + "<div class=" + "card>" + "<img src=" +doc.thumbnail + "<p>" + "<span class=" + "job-title>" 
+                        + doc.title + "</span>" +
+                        doc.company_name + "<br/>" + "<a href=" + doc.share_link 
+                         + ">Apply Now!</a>" + " </p></div><br/>"
                 })
 
                 // Display the final string which includes all the jobs

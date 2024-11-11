@@ -1,3 +1,4 @@
+
 /* MAIN.HTML */
 #container {
     display: grid; 
@@ -77,17 +78,33 @@ img[alt=logo] {
 
 #results-container {
     display: grid; 
-    grid-template-rows: 0vh 25vh 80vh 1vh;
-    grid-template-columns: 25vw 25vw 25vw 25vw; 
+    grid-template-rows: 0vh 20vh 3vh 80vh 1vh;
+    grid-template-columns: 15vw 35vw 35vw 15vw; 
 }
 
 #results-banner {
     grid-row: 2 / span 1; 
     grid-column: 1 / span 4; 
+    position: relative; 
+}
+
+#results-banner::before {
+    content: "";
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-image: url(/images/cityb&w.jpg); 
+    background-repeat: no-repeat;
+    background-size: cover; 
+    z-index: -1; 
+    opacity: 60%; 
+    filter: brightness(90%); 
 }
 
 #content {
-    grid-row: 3 / span 1; 
+    grid-row: 4 / span 1; 
     grid-column: 2 / span 2; 
 }
 
@@ -100,16 +117,50 @@ img[alt=logo] {
 #results-icon img {
     justify-self: left; 
     align-self: center; 
+    margin-right: 20px; 
 }
 
-#results-icon p {
-    justify-self: right; 
-    align-self: center; 
+#results-icon span {
+    position: absolute;  
+    top: 107px; 
+    left: 285px; 
+    font-size: 22px; 
+    text-decoration:solid; 
+    background-color: white;
+    padding: 6px; 
+    border-radius: 10px;
 }
 
-img {
-    height: 100px; 
-    width: 100px; 
+
+.card {
+    padding: 5px; 
+    padding-left: 15px; 
+    padding-bottom: 0px;
+}
+
+.card {
+    font-size: 15px; 
+}
+
+.job-title {
+    font-size: 19px; 
+    text-decoration: solid;
+}
+
+.card img {
+    height: 50px; 
+    width: 50px;
+}
+
+.card a {
+    text-decoration: none;
+}
+
+img[alt="profile-icon"] {
+    position: absolute; 
+    top: 70px;  
+    height: 150px; 
+    width: 150px; 
 }
 
 
