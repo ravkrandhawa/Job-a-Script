@@ -46,7 +46,7 @@ function storeRadioAnswers() {
                 environment: remote + " " + hybrid + " " + inPerson,
                 education: education,
                 frameworks: aws + " " + ajax + " " + angular + " " + bootstrap + " " + blazor + " " + playFramework + " " + others
-            })
+            }, {merge: true})
             
         }
     })
