@@ -34,11 +34,11 @@ function editUserInfo() {
 
 function saveUserInfo() {
     userName = document.getElementById("nameInput").value; 
-    userSchool = document.getElementById("emailInput").value; 
+    userEmail = document.getElementById("emailInput").value; 
     userLinkedIn = document.getElementById("linkedinInput").value; 
     currentUser.update({
         name: userName, 
-        school: userEmail,
+        email: userEmail,
         linkedin: userLinkedIn
     })
     .then(() => {
