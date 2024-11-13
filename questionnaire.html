@@ -1,279 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <title>Job-a-script</title>
-        <meta name="comp1800 template" content="My 1800 App">
+<head>
+    <title>Job-a-script</title>
+    <meta name="comp1800 template" content="My 1800 App">
 
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Bootstrap Library CSS CDN go here -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous">
-        <!-- Boostrap Library JS CDN  go here -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous">
+    <!-- Bootstrap Library CSS CDN go here -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Boostrap Library JS CDN  go here -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
         </script>
 
-        <!-------------------------------------------------------->
-        <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
-        <!-------------------------------------------------------->
-        <script
-            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script
-            src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-        <script
-            src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-        <script
-            src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-        <script
-            src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-        <link type="text/css" rel="stylesheet"
-            href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-        <script
-            src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <!-------------------------------------------------------->
+    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+    <!-------------------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
-        <!-- Other libraries go here -->
+    <!-- Other libraries go here -->
 
-        <!-- Link to styles of your own -->
-        <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+    <!-- Link to styles of your own -->
+    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <!--This is where the nav bar goes. This nav bar is supposed to be the one before login-->
-        <nav id="navbarPlaceholder"></nav>
+    <!--This is where the nav bar goes. This nav bar is supposed to be the one before login-->
+    <nav id="navbarPlaceholder"></nav>
 
-        <!------------------------------>
-        <!-- Your HTML Layout go here -->
-        <div>
-
-            <p>How many years of experience do you have?</p>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value
-                    id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    No years of experience.
-                </label>
-                <input class="form-check-input" type="checkbox" value
-                    id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    1 - 2 Years of experience.
-                </label>
-                <input class="form-check-input" type="checkbox" value
-                    id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    3 - 5 Years of experience.
-                </label>
-                <input class="form-check-input" type="checkbox" value
-                    id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    5+ Years of experience.
-                </label>
-            </div>
-
-            <p>What languages are you familiar with?</p>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value
-                    id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    Python
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value
-                    id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    Java
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value
-                    id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    CSS
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value
-                    id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    HTML
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value
-                    id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    JavaScript
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value
-                    id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    R
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value
-                    id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    Lua
-                </label>
-            </div>
-
-            <p>What is your minimum salary expected?</p>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <div>
+        <p>How many years of experience do you have?</p>
+        <form class="form-check" id="q1">
+            <input class="form-check-input" type="radio" value="No years of experience." id="defaultCheck1"
+                name="experience">
             <label class="form-check-label" for="defaultCheck1">
-                $50,000+
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                $60,000+
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                $70,000+
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                $80,000+
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                $90,000+
-            </label>
-
-            <p>What type of job are you looking for?</p>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                Full-time.
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                Part-time.
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                Contract.
-            </label>
-
-            <p>What kind of work environment do you prefer?</p>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                Remote
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                Hybrid
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                In-Person
-            </label>
-
-            <p>What is your educational level?</p>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                No relevant education.
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                Certification(external or educational institution)
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                Diploma
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                Undergraduate degree
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                Master's degree
-            </label>
-
-            <p>What frameworks are you familiar with?</p>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                AWS
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                AJAX
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                Angular
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                Bootstrap
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                Blazor
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                Play Framework
-            </label>
-            <input class="form-check-input" type="checkbox" value
-                id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-                Others
+                No years of experience.
             </label>
         </div>
-        <button type="button"
-            class="btn btn-secondary btn-lg text-center">Submit</button>
+        <div>
+            <input class="form-check-input" type="radio" value="1 - 2 Years of experience." id="defaultCheck1"
+                name="experience">
+            <label class="form-check-label" for="defaultCheck1">
+                1 - 2 Years of experience.
+            </label>
+        </div>
+        <div>
+            <input class="form-check-input" type="radio" value="3 - 5 Years of experience." id="defaultCheck1"
+                name="experience">
+            <label class="form-check-label" for="defaultCheck1">
+                3 - 5 Years of experience.
+            </label>
+        </div>
+        <div>
+            <input class="form-check-input" type="radio" value="5+ Years of experience." id="defaultCheck1"
+                name="experience">
+            <label class="form-check-label" for="defaultCheck1">
+                5+ Years of experience.
+            </label>
+        </form>
 
-        <!-- our own footer goes here-->
-        <nav id="footerPlaceholder"></nav>
+        <p>What languages are you familiar with?</p>
+        <form class="form-check" id="q2">
+            <input class="form-check-input" type="checkbox" value="python" id="defaultCheck1" name="languagesA">
+            <label class="form-check-label" for="defaultCheck1">
+                Python
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="java" id="defaultCheck1" name="languagesB">
+            <label class="form-check-label" for="defaultCheck1">
+                Java
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="css" id="defaultCheck1" name="languagesC">
+            <label class="form-check-label" for="defaultCheck1">
+                CSS
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="html" id="defaultCheck1" name="languagesD">
+            <label class="form-check-label" for="defaultCheck1">
+                HTML
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="javascript" id="defaultCheck1" name="languagesE">
+            <label class="form-check-label" for="defaultCheck1">
+                JavaScript
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="r" id="defaultCheck1" name="languagesF">
+            <label class="form-check-label" for="defaultCheck1">
+                R
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="lua" id="defaultCheck1" name="languagesG">
+            <label class="form-check-label" for="defaultCheck1">
+                Lua
+            </label>
+        </div>
 
-        <!------------------------------>
-        <!-- Stuff for body goes here -->
+        <p>What is your minimum salary expected?</p>
+        <input class="form-check-input" type="radio" value="$50,000+" id="defaultCheck1" name="salary">
+        <label class="form-check-label" for="defaultCheck1">
+            $50,000+
+        </label>
+        <input class="form-check-input" type="radio" value="$60,000+" id="defaultCheck1" name="salary">
+        <label class="form-check-label" for="defaultCheck1">
+            $60,000+
+        </label>
+        <input class="form-check-input" type="radio" value="$70,000+" id="defaultCheck1" name="salary">
+        <label class="form-check-label" for="defaultCheck1">
+            $70,000+
+        </label>
+        <input class="form-check-input" type="radio" value="$80,000+" id="defaultCheck1" name="salary">
+        <label class="form-check-label" for="defaultCheck1">
+            $80,000+
+        </label>
+        <input class="form-check-input" type="radio" value="$90,000+" id="defaultCheck1" name="salary">
+        <label class="form-check-label" for="defaultCheck1">
+            $90,000+
+        </label>
 
-        <!---------------------------------------------->
-        <!-- Your own JavaScript functions go here    -->
-        <!---------------------------------------------->
+        <p>What type(s) of jobs are you looking for?</p>
+        <input class="form-check-input" type="checkbox" value="full-time" id="defaultCheck1" name="full-time">
+        <label class="form-check-label" for="defaultCheck1">
+            Full-time.
+        </label>
+        <input class="form-check-input" type="checkbox" value="part-time" id="defaultCheck1" name="part-time">
+        <label class="form-check-label" for="defaultCheck1">
+            Part-time.
+        </label>
+        <input class="form-check-input" type="checkbox" value="contract" id="defaultCheck1" name="contract">
+        <label class="form-check-label" for="defaultCheck1">
+            Contract.
+        </label>
 
-        <!-- Link to scripts of your own -->
-        <script src="./scripts/firebaseAPI_BBY06.js"></script>
-        <script src="./scripts/skeleton.js"></script>
-        <script src="./scripts/script.js"></script>
+        <p>What kind of work environment(s) do you prefer?</p>
+        <input class="form-check-input" type="checkbox" value="remote" id="defaultCheck1" name="remote">
+        <label class="form-check-label" for="defaultCheck1">
+            Remote
+        </label>
+        <input class="form-check-input" type="checkbox" value="hybrid" id="defaultCheck1" name="hybrid">
+        <label class="form-check-label" for="defaultCheck1">
+            Hybrid
+        </label>
+        <input class="form-check-input" type="checkbox" value="in-person" id="defaultCheck1" name="inPerson">
+        <label class="form-check-label" for="defaultCheck1">
+            In-Person
+        </label>
 
-    </body>
+        <p>What is your educational level?</p>
+        <input class="form-check-input" type="radio" value="No relevant education." id="defaultCheck1" name="education">
+        <label class="form-check-label" for="defaultCheck1">
+            No relevant education.
+        </label>
+        <input class="form-check-input" type="radio" value="Certification" id="defaultCheck1" name="education">
+        <label class="form-check-label" for="defaultCheck1">
+            Certification(external or educational institution)
+        </label>
+        <input class="form-check-input" type="radio" value="Diploma" id="defaultCheck1" name="education">
+        <label class="form-check-label" for="defaultCheck1">
+            Diploma
+        </label>
+        <input class="form-check-input" type="radio" value="Undergraduate degree" id="defaultCheck1" name="education">
+        <label class="form-check-label" for="defaultCheck1">
+            Undergraduate degree
+        </label>
+        <input class="form-check-input" type="radio" value="Master's degree" id="defaultCheck1" name="education">
+        <label class="form-check-label" for="defaultCheck1">
+            Master's degree
+        </label>
+
+        <p>What frameworks are you familiar with?</p>
+        <input class="form-check-input" type="checkbox" value="AWS" id="defaultCheck1" name="AWS">
+        <label class="form-check-label" for="defaultCheck1">
+            AWS
+        </label>
+        <input class="form-check-input" type="checkbox" value="AJAX" id="defaultCheck1" name="AJAX">
+        <label class="form-check-label" for="defaultCheck1">
+            AJAX
+        </label>
+        <input class="form-check-input" type="checkbox" value="Angular" id="defaultCheck1" name="Angular">
+        <label class="form-check-label" for="defaultCheck1">
+            Angular
+        </label>
+        <input class="form-check-input" type="checkbox" value="Bootstrap" id="defaultCheck1" name="Bootstrap">
+        <label class="form-check-label" for="defaultCheck1">
+            Bootstrap
+        </label>
+        <input class="form-check-input" type="checkbox" value="Blazor" id="defaultCheck1" name="Blazor">
+        <label class="form-check-label" for="defaultCheck1">
+            Blazor
+        </label>
+        <input class="form-check-input" type="checkbox" value="Play Framework" id="defaultCheck1" name="playFramework">
+        <label class="form-check-label" for="defaultCheck1">
+            Play Framework
+        </label>
+        <input class="form-check-input" type="checkbox" value="Others" id="defaultCheck1" name="Others">
+        <label class="form-check-label" for="defaultCheck1">
+            Others
+        </label>
+    </div>
+    <button type="button" class="btn btn-secondary btn-lg text-center">Submit</button>
+
+    <!-- our own footer goes here-->
+    <nav id="footerPlaceholder"></nav>
+
+    <!------------------------------>
+    <!-- Stuff for body goes here -->
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+
+    <!-- Link to scripts of your own -->
+    <script src="./scripts/firebaseAPI_BBY06.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/questionnaire.js"></script>
+
+</body>
 
 </html>
