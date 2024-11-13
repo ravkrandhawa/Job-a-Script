@@ -4,31 +4,48 @@
 function storeRadioAnswers() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
-            let experience = document.querySelector('input[name="experience"]:checked')?.value || null;
+            let experience = document.querySelector('input[name="experience"]:checked')?.value || "";
             // Storing familiar languages
-            let languages = document.querySelector('input[name="languages"]:checked')?.value || null;
+            let languagesA = document.querySelector('input[name="languagesA"]:checked')?.value || "";
+            let languagesB = document.querySelector('input[name="languagesB"]:checked')?.value || "";
+            let languagesC = document.querySelector('input[name="languagesC"]:checked')?.value || "";
+            let languagesD = document.querySelector('input[name="languagesD"]:checked')?.value || "";
+            let languagesE = document.querySelector('input[name="languagesE"]:checked')?.value || "";
+            let languagesF = document.querySelector('input[name="languagesF"]:checked')?.value || "";
+            let languagesG = document.querySelector('input[name="languagesG"]:checked')?.value || "";
             // Storing minimum salary expectation
-            let salary = document.querySelector('input[name="salary"]:checked')?.value || null;
+            let salary = document.querySelector('input[name="salary"]:checked')?.value || "";
             // Storing job type preference
-            let jobType = document.querySelector('input[name="jobType"]:checked')?.value || null;
+            let fullTime = document.querySelector('input[name="full-time"]:checked')?.value || "";
+            let partTime = document.querySelector('input[name="part-time"]:checked')?.value || "";
+            let contract = document.querySelector('input[name="contract"]:checked')?.value || "";
             // Storing work environment preference
-            let environment = document.querySelector('input[name="environment"]:checked')?.value || null;
+            let remote = document.querySelector('input[name="remote"]:checked')?.value || "";
+            let hybrid = document.querySelector('input[name="hybrid"]:checked')?.value || "";
+            let inPerson = document.querySelector('input[name="inPerson"]:checked')?.value || "";
             // Storing educational level
-            let education = document.querySelector('input[name="education"]:checked')?.value || null;
+            let education = document.querySelector('input[name="education"]:checked')?.value || "";
             // Storing familiar frameworks
-            let frameworks = document.querySelector('input[name="frameworks"]:checked')?.value || null;
+            let aws = document.querySelector('input[name="AWS"]:checked')?.value || "";
+            let ajax = document.querySelector('input[name="AJAX"]:checked')?.value || "";
+            let angular = document.querySelector('input[name="Angular"]:checked')?.value || "";
+            let bootstrap = document.querySelector('input[name="Bootstrap"]:checked')?.value || "";
+            let blazor = document.querySelector('input[name="Blazor"]:checked')?.value || "";
+            let playFramework = document.querySelector('input[name="playFramework"]:checked')?.value || "";
+            let others = document.querySelector('input[name="Others"]:checked')?.value || "";
+
         
             const db = firebase.firestore();
             const questionnaireRef = db.collection("users").doc(user.uid)
             console.log(questionnaireRef);
             questionnaireRef.set({
                 experience: experience,
-                languages: languages,
+                languages: languagesA + " " + languagesB + " " + languagesC + " " + languagesD + " " + languagesE + " " + languagesF + " " + languagesG,
                 salary: salary,
-                jobType: jobType,
-                environment: environment,
+                jobType: fullTime + " " + partTime + " " + contract,
+                environment: remote + " " + hybrid + " " + inPerson,
                 education: education,
-                frameworks: frameworks
+                frameworks: aws + " " + ajax + " " + angular + " " + bootstrap + " " + blazor + " " + playFramework + " " + others
             })
             
         }
