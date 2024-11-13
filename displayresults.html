@@ -25,7 +25,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
     <!-- Other libraries go here -->
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Link to styles of your own -->
     <!-- <link rel="stylesheet" href="./styles/style.css"> -->
 
@@ -70,7 +70,7 @@
                     message = message + "<div class=" + "card>" + "<img src=" +doc.thumbnail + "<p>" + "<span class=" + "job-title>" 
                         + doc.title + "</span>" +
                         doc.company_name + "<br/>" + "<a href=" + doc.share_link 
-                         + ">Apply Now!</a>" + " </p></div><br/>"
+                         + ">Apply Now!</a>" + "<i id="+ doc.company_name +" class=\"material-icons\">bookmark_border</i>" + "</p></div><br/>";
                 })
 
                 // Display the final string which includes all the jobs
@@ -81,6 +81,7 @@
     <script src="./scripts/firebaseAPI_BBY06.js"></script>
     <script src="./scripts/skeleton.js"></script>
     <script src="./scripts/script.js"></script>
+    
 </body>
 
 </html>
