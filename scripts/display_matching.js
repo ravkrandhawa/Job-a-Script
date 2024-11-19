@@ -85,7 +85,7 @@ function displayListings(listingsWithScores) {
         const matchScore = item.matchScore;
         let jobCard = document.createElement("div");
         jobCard.innerHTML = `
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-4" style="border: solid; border-radius: 10px; border-color: lightgrey">
                 <div id="${doc.job_id}" class="card h-100">
                     <img id="${doc.thumbnail}" src="${doc.thumbnail || './images/default-thumbnail.png'}" class="card-img-top" alt="${doc.title}">
                     <div class="card-body">

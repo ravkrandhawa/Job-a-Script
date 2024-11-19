@@ -27,13 +27,13 @@
 <body>
     <nav id="navbarPlaceholder"></nav>
 
-    <div id="results-container" class="container mt-5">
-        <div id="results-banner" class="text-center mb-4">
-            <h2>Your Job Matches</h2>
+    <div id="results-container">
+        <div id="results-div">
         </div>
-        <div id="results-icon" class="d-flex align-items-center justify-content-center mb-4">
-            <img alt="profile-icon" src="./images/profile-user.png" class="me-2" style="width: 50px;">
-            <span>Hi <div id="userName"></div>,<br/>Your results are here.</span>
+        <div id="results-div-items">
+            <img alt="profile-icon" src="./images/profile-user.png">
+            <span id="big-span">Hi <span id="name-goes-here"></span><span>,</span>
+            Your results are here.</span>
         </div>
         <div id="content" class="row">
         </div>
@@ -48,11 +48,13 @@
     <script src="./scripts/skeleton.js"></script>
     <script src="./scripts/script.js"></script>
     <script src="./scripts/display_matching.js"></script>
+    <script src="./scripts/insertName.js"></script>
 
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

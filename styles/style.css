@@ -49,7 +49,6 @@ img[alt=logo] {
 #profile-banner {
     grid-row: 2 / span 1; 
     grid-column: 1 / span 4; 
-    background-color: yellow; 
     background-image: url(/images/cityb&w.jpg); 
     background-repeat: no-repeat;
     background-size: cover;
@@ -78,59 +77,68 @@ img[alt=logo] {
 
 #results-container {
     display: grid; 
-    grid-template-rows: 0vh 20vh 3vh 80vh 1vh;
-    grid-template-columns: 15vw 35vw 35vw 15vw; 
-}
-
-#results-banner {
-    grid-row: 2 / span 1; 
-    grid-column: 1 / span 4; 
-    position: relative; 
-}
-
-#results-banner::before {
-    content: "";
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background-image: url(/images/cityb&w.jpg); 
-    background-repeat: no-repeat;
-    background-size: cover; 
-    z-index: -1; 
-    opacity: 60%; 
-    filter: brightness(90%); 
+    grid-template-columns: 7vw auto 7vw;  
+    grid-template-rows: 20vh auto; 
 }
 
 #content {
-    grid-row: 4 / span 1; 
-    grid-column: 2 / span 2; 
-}
-
-#results-icon {
+    grid-column: 2 / span 1;
     grid-row: 2 / span 1; 
-    grid-column: 2 / span 2; 
+    padding-top: 15px; 
+}
+
+
+#results-div {
+    grid-column: 1 / span 3 ; 
+    grid-row: 1 / span 1; 
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#results-div::before {
+    content: "";
+    background-image: url(/images/cityb&w.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    opacity: 0.8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+#results-div-items {
+    grid-column: 2 / span 1; 
+    grid-row: 1 / span 1; 
     display: flex; 
+    flex-direction: row; /* Keep items in a row */
+    align-items: center; /* Vertically center items */
+    justify-content: space-between; /* Push the items to opposite sides */
+    padding: 10px;
 }
 
-#results-icon img {
-    justify-self: left; 
-    align-self: center; 
-    margin-right: 20px; 
+#results-div-items img {
+    flex-shrink: 0; /* Prevent the image from resizing */
 }
 
-#results-icon span {
-    position: absolute;  
-    top: 107px; 
-    left: 285px; 
+#results-div-items #big-span {
     font-size: 22px; 
-    text-decoration:solid; 
-    background-color: white;
-    padding: 6px; 
-    border-radius: 10px;
+    background-color: white; 
+    border-radius: 10px; 
+    padding: 6px;
+    text-align: left; /* Align text inside the span to the left */
+    margin-left: 182px; 
+    min-width: 240px; 
+    max-width: 240px; 
+    white-space: normal;
+    word-wrap: break-word; 
 }
-
 
 .card {
     padding: 5px; 
