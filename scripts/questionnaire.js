@@ -146,9 +146,3 @@ document.querySelector('button[type="button"]').addEventListener('click', storeR
 // )}
 
 // document.getElementById("personalInfoFields").disabled = true; 
-
-//Function generating the display_results.html page which will render the job results once the user selects the submit button
-function submitQuestionnaireButton() {
-    window.location.href = "display_results.html"; 
-}
-document.getElementById('submitQuestionnaireBtn').onclick = submitQuestionnaireButton;
