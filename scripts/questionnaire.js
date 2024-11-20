@@ -2,6 +2,7 @@
 function storeRadioAnswers() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
+            // Storing the experience level value
             let experience = document.querySelector('input[name="experience"]:checked')?.value || "";
             // Storing familiar languages
             let languagesA = document.querySelector('input[name="languagesA"]:checked')?.value || "";
@@ -36,6 +37,8 @@ function storeRadioAnswers() {
             const db = firebase.firestore();
             const questionnaireRef = db.collection("users").doc(user.uid)
             console.log(questionnaireRef);
+            // We are setting the values of the questionnaire inputs to values in user's specific firebase database.
+            // These values are concatenated into strings and seperated by spaces.
             questionnaireRef.set({
                 experience: experience,
                 languages: languagesA + " " + languagesB + " " + languagesC + " " + languagesD + " " + languagesE + " " + languagesF + " " + languagesG,

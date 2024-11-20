@@ -1,4 +1,4 @@
-// Function to parse user data into words for matching
+// Function to parse user data into words for matching. It splits each value if there is a space.
 function parseUserData(userInfo) {
     const parsedData = {};
     for (let key in userInfo) {
@@ -7,10 +7,11 @@ function parseUserData(userInfo) {
     return parsedData;
 }
 
-// Function to calculate the match score of each job listing
+// Function to calculate the match score of each job listing.
+// This function allows us to sort the jobs that fit the user's answers the best.
 function calculateMatchScore(parsedUserData, doc) {
     let matchCount = 0;
-
+    // Every time the words from parsedUserKey is seen in the job listings, the matchCount is incremented.
     for (let key in parsedUserData) {
         parsedUserData[key].forEach(word => {
             if (
@@ -29,7 +30,8 @@ function calculateMatchScore(parsedUserData, doc) {
     return matchCount;
 }
 
-// Function to retrieve user data, parse it, and pass to fetchAndDisplayJobs
+// Function to retrieve user data, parse it, and pass to fetchAndDisplayJobs.
+// We trim the jobs so the spaces we added earlier are removed from outside the string.
 function userDataToArray() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -45,8 +47,9 @@ function userDataToArray() {
                         languages: userDoc.data().languages.trim(),
                         salary: userDoc.data().salary.trim()
                     };
-
+                    //Splits the trimmed data's empty spaces in between each word.
                     const parsedUserData = parseUserData(userInfo);
+                    // Fetches the jobs using the data and sorts it by highest match score first.
                     fetchAndDisplayJobs(parsedUserData);
                 })
                 .catch(error => console.error("Error retrieving user data:", error));
@@ -106,7 +109,7 @@ function displayListings(listingsWithScores) {
 
         console.log(`#${doc.job_id}` + " doc ID")
         // Attach event listener to the bookmark icon
-        
+        // Checks if the job is bookmarked already. If bookmarked, change bookmark icon to filled in.
         let bookmarksRef = db.collection("users").doc(firebase.auth().currentUser.uid).collection("bookmarks");
         bookmarksRef.doc(doc.job_id).get().then(docSnapshot => {
             if (docSnapshot.exists) {
@@ -122,7 +125,7 @@ function displayListings(listingsWithScores) {
     });
 }
 
-// Run the userDataToArray function to start the process
+// Run the userDataToArray function to start.
 userDataToArray();
 
 function bookmarkCollection(doc) {
