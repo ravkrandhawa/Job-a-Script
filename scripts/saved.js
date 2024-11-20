@@ -36,7 +36,7 @@ function displaySaved(bookmarksCollection) {
                             <h5 id="${title}" class="card-title">${title}</h5>
                             <p id="${companyName}" class="card-text"><strong>Company:</strong> ${companyName}</p>
                             <a id="${shareLink}" href="${shareLink}" target="_blank" class="btn btn-primary">Apply Now</a>
-                            <i id="${companyName}" class="material-icons float-end ${jobId}">bookmark_border</i>
+                            <i id="${companyName}" class="material-icons float-end ${jobId}">bookmark</i>
                         </div>
                     </div>
                 </div>
@@ -48,80 +48,52 @@ function displaySaved(bookmarksCollection) {
             console.log(`#${jobId}` + " doc ID")
             // Attach event listener to the bookmark icon
             
-            let bookmarksRef = db.collection("users").doc(firebase.auth().currentUser.uid).collection("bookmarks");
-            bookmarksRef.doc(doc.job_id).get().then(docSnapshot => {
-                if (docSnapshot.exists) {
-                    jobCard.getElementsByTagName("i")[0].innerHTML = "bookmark";
-                }
-            });
+            // let bookmarksRef = db.collection("users").doc(firebase.auth().currentUser.uid).collection("bookmarks");
+            // bookmarksRef.doc(doc.job_id).get().then(docSnapshot => {
+            //     if (docSnapshot.exists) {
+            //         bookmarkCard.getElementsByTagName("i")[0].innerHTML = "bookmark";
+            //     }
+            // });
     
+            // bookmarkCard.querySelector('i').onclick = () => {
+            //     // add if statement
+            //     bookmarkCollection(currentUser);
+            // };
+
             bookmarkCard.querySelector('i').onclick = () => {
-                // add if statement
-                bookmarkCollection(currentUser);
-            };
+                if (confirm("Are you sure you would like to remove this job from bookmarks? This job won't be able to bookmark this job through the bookmarks page:")) {
+                    removeBookmark(jobId);
+                }
+            }
     
         });
     })
 }
 
-// function bookmarkCollection(doc) {
-//     firebase.auth().onAuthStateChanged(user => {
-//         console.log("Authentication")
-//         if (user) {
-//             // This are variables to get the id data that should be stored in firestore
-//             // let thumbnail = document.querySelector('#${doc.thumbnail}');
-//             console.log(doc)
-//             let title = doc.title;
-//             console.log(title);
-//             // let companyName = document.querySelector('#${doc.company_name}');
-//             // let shareLink = document.querySelector('#${doc.share_link}');
+function removeBookmark(jobId) {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
 
-//             console.log(db.collection("users").doc(user.uid));
+            // Reference to the user's subcollection "bookmarks"
+            let bookmarksRef = db.collection("users").doc(user.uid).collection("bookmarks");
 
-//             //extract details of "THE job"
-//             var theJob = {
-//                 job_id: doc.job_id,
-//                 // thumbnail: doc.thumbnail,
-//                 title: doc.title,
-//                 company_name: doc.company_name,
-//                 share_link: doc.share_link
+            // Add the job to the "bookmarks" subcollection
+            const bookmarkIcon = document.getElementById(jobId);
 
-//             }
-
-//             // Reference to the user's subcollection "bookmarks"
-//             let bookmarksRef = db.collection("users").doc(user.uid).collection("bookmarks");
-
-//             // Add the job to the "bookmarks" subcollection
-//             const bookmarkIcon = document.getElementById(`${doc.job_id}`);
-
-//             bookmarksRef.doc(theJob.job_id).get().then(docSnapshot => {
-//                 console.log("Thingy is the not working.");
-//                 if (!docSnapshot.exists) {
-//                     bookmarksRef.doc(theJob.job_id).set(theJob)
-//                     .then(() => {
-//                         console.log("Bookmark added successfully!");
-//                     })
-//                     .catch(error => {
-//                         console.log("hi arshypoo0")
-//                     });
-
-//                 console.log(`#${doc.job_id}` + " doc ID")
-//                 // Attach event listener to the bookmark icon
-
-//                 console.log(bookmarkIcon);
-//                 bookmarkIcon.getElementsByClassName(doc.job_id)[0].innerHTML = 'bookmark';
-//             } else {
-//                 console.log("The bookmark is getting deleted.");
-//                 bookmarksRef.doc(theJob.job_id).delete();
+            
+            console.log("The bookmark is getting deleted.");
+            bookmarksRef.doc(jobId).delete();
                 
-//                 bookmarkIcon.getElementsByClassName(doc.job_id)[0].innerHTML = 'bookmark_border';
-//             }
-//             });
+            bookmarkIcon.getElementsByClassName(jobId)[0].remove();
 
-//         } else {
-//             // No user is signed in.
-//             console.log("No user is signed in");
-//             window.location.href = "login.html";
-//         }
-//     });
-// }
+            console.log("Confirm works");
+
+            console.log("Job Id: " + jobId);
+
+        } else {
+            // No user is signed in.
+            console.log("No user is signed in");
+            window.location.href = "login.html";
+        }
+    });
+}
