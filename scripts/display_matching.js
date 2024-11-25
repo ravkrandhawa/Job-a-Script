@@ -94,9 +94,9 @@ function displayListings(listingsWithScores) {
                     <div class="card-body">
                         <h5 id="${doc.title}" class="card-title">${doc.title}</h5>
                         <p id="${doc.company_name}" class="card-text"><strong>Company:</strong> ${doc.company_name}</p>
-                        <p class="card-text"><strong>Location:</strong> ${doc.location}</p>
-                        <p class="card-text">${doc.description ? doc.description.substring(0, 100) + '...' : ''}</p>
-                        <p class="card-text"><strong>Match Score:</strong> ${matchScore}</p>
+                        <p id="${doc.location}" class="card-text"><strong>Location:</strong> ${doc.location}</p>
+                        <p id="${doc.description}" class="card-text">${doc.description ? doc.description.substring(0, 100) + '...' : ''}</p>
+                        <p id="${matchScore}" class="card-text"><strong>Match Score:</strong> ${matchScore}</p>
                         <a id="${doc.share_link}" href="${doc.share_link}" target="_blank" class="btn btn-primary">Apply Now</a>
                         <i id="${doc.company_name}" class="material-icons float-end ${doc.job_id}">bookmark_border</i>
                     </div>
@@ -119,7 +119,7 @@ function displayListings(listingsWithScores) {
 
         jobCard.querySelector('i').onclick = () => {
             // add if statement
-            bookmarkCollection(doc);
+            bookmarkCollection(doc, matchScore);
         };
 
     });
@@ -128,7 +128,7 @@ function displayListings(listingsWithScores) {
 // Run the userDataToArray function to start.
 userDataToArray();
 
-function bookmarkCollection(doc) {
+function bookmarkCollection(doc, matchScore) {
     firebase.auth().onAuthStateChanged(user => {
         console.log("Authentication")
         if (user) {
@@ -144,12 +144,14 @@ function bookmarkCollection(doc) {
 
             //extract details of "THE job"
             var theJob = {
+                thumbnail: doc.thumbnail,
                 job_id: doc.job_id,
-                // thumbnail: doc.thumbnail,
                 title: doc.title,
                 company_name: doc.company_name,
-                share_link: doc.share_link
-
+                share_link: doc.share_link,
+                location: doc.location,
+                matchScore: matchScore,
+                description: doc.description
             }
 
             // Reference to the user's subcollection "bookmarks"
