@@ -34,8 +34,8 @@ function displaySaved(bookmarksCollection) {
 
             let bookmarkCard = document.createElement("div");
             bookmarkCard.innerHTML = `
-                <div class="col-md-4 mb-4" style="border: solid; border-radius: 10px; border-color: lightgrey">
-                    <div id="${jobId}" class="card h-100">
+                <div id="${jobId}" class="col-md-4 mb-4" style="border: solid; border-radius: 10px; border-color: lightgrey">
+                    <div class="card h-100">
                         <img id="${thumbnail}" src="${thumbnail || './images/default-thumbnail.png'}" class="card-img-top" alt="${title}">
                         <div class="card-body">
                             <h5 id="${title}" class="card-title">${title}</h5>
@@ -49,7 +49,6 @@ function displaySaved(bookmarksCollection) {
                     </div>
                 </div>
             `;
-
 
             contentDiv.appendChild(bookmarkCard);
 
@@ -78,11 +77,11 @@ function displaySaved(bookmarksCollection) {
                     confirmButtonColor: "#DD6B55",
                     confirmButtonText: "Yes, remove it!",
                     closeOnConfirm: false
-                  },
-                  function(){
-                    swal("Deleted!", "Your bookmark has been removed.", "success");
-                    removeBookmark(jobId);
-                  });
+                },
+                    function () {
+                        swal("Deleted!", "Your bookmark has been removed.", "success");
+                        removeBookmark(jobId);
+                    });
             });
 
         });
@@ -104,6 +103,12 @@ function removeBookmark(jobId) {
             bookmarksRef.doc(jobId).delete();
 
             bookmarkIcon.getElementsByClassName(jobId)[0].remove();
+
+            // Find the card element by jobId and hide it
+            let cardElement = document.getElementById(jobId);
+            if (cardElement) {
+                cardElement.style.display = "none";  // Hide the element
+            }
 
             console.log("Confirm works");
 
