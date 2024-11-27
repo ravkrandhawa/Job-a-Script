@@ -135,16 +135,24 @@ function bookmarkCollection(doc, matchScore) {
             // This are variables to get the id data that should be stored in firestore
             // let thumbnail = document.querySelector('#${doc.thumbnail}');
             console.log(doc)
-            let title = doc.title;
-            console.log(title);
+            let thumbnail = doc.thumbnail;
             // let companyName = document.querySelector('#${doc.company_name}');
             // let shareLink = document.querySelector('#${doc.share_link}');
 
             console.log(db.collection("users").doc(user.uid));
 
+            console.log(thumbnail);
+
+            if (thumbnail == undefined) {
+                thumbnail = './images/default-thumbnail.png';
+            }
+
+            console.log(thumbnail);
+
+
             //extract details of "THE job"
             var theJob = {
-                thumbnail: doc.thumbnail,
+                thumbnail: thumbnail,
                 job_id: doc.job_id,
                 title: doc.title,
                 company_name: doc.company_name,

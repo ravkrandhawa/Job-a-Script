@@ -49,31 +49,42 @@ function displaySaved(bookmarksCollection) {
                     </div>
                 </div>
             `;
-    
-    
+
+
             contentDiv.appendChild(bookmarkCard);
-    
+
             console.log(`#${jobId}` + " doc ID")
             // Attach event listener to the bookmark icon
-            
+
             // let bookmarksRef = db.collection("users").doc(firebase.auth().currentUser.uid).collection("bookmarks");
             // bookmarksRef.doc(doc.job_id).get().then(docSnapshot => {
             //     if (docSnapshot.exists) {
             //         bookmarkCard.getElementsByTagName("i")[0].innerHTML = "bookmark";
             //     }
             // });
-    
+
             // bookmarkCard.querySelector('i').onclick = () => {
             //     // add if statement
             //     bookmarkCollection(currentUser);
             // };
 
-            bookmarkCard.querySelector('i').onclick = () => {
-                if (confirm("Are you sure you would like to remove this job from bookmarks? This job won't be able to bookmark this job through the bookmarks page:")) {
+            // Attach event listener to the bookmark icon
+            bookmarkCard.querySelector('i').addEventListener('click', () => {
+                swal({
+                    title: "Are you sure?",
+                    text: "You will not be able to recover this bookmark through the bookmarks page",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, remove it!",
+                    closeOnConfirm: false
+                  },
+                  function(){
+                    swal("Deleted!", "Your bookmark has been removed.", "success");
                     removeBookmark(jobId);
-                }
-            }
-    
+                  });
+            });
+
         });
     })
 }
@@ -88,10 +99,10 @@ function removeBookmark(jobId) {
             // Add the job to the "bookmarks" subcollection
             const bookmarkIcon = document.getElementById(jobId);
 
-            
+
             console.log("The bookmark is getting deleted.");
             bookmarksRef.doc(jobId).delete();
-                
+
             bookmarkIcon.getElementsByClassName(jobId)[0].remove();
 
             console.log("Confirm works");
