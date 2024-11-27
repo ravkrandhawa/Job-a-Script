@@ -25,8 +25,9 @@
     align-items: center;
 }
 
-a {
-    text-decoration: none; 
+.card a {
+    text-decoration: none;
+    color: #25446A !important;
 }
 
 .main-menu-selection :hover {
@@ -160,9 +161,9 @@ img[alt=logo] {
     width: 50px;
 }
 
-.card a {
+/* .card a {
     text-decoration: none;
-}
+} */
 
 img[alt="profile-icon"] {
     position: absolute; 
