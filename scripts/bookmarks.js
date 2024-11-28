@@ -34,8 +34,8 @@ function displaySaved(bookmarksCollection) {
 
             let bookmarkCard = document.createElement("div");
             bookmarkCard.innerHTML = `
-                <div class="col-md-4 mb-4" style="border: solid; border-radius: 10px; border-color: lightgrey">
-                    <div id="${jobId}" class="card h-100">
+                <div id="${jobId}" class="col-md-4 mb-4" style="border: solid; border-radius: 10px; border-color: lightgrey">
+                    <div class="card h-100">
                         <img id="${thumbnail}" src="${thumbnail || './images/default-thumbnail.png'}" class="card-img-top" alt="${title}">
                         <div class="card-body">
                             <h5 id="${title}" class="card-title">${title}</h5>
@@ -49,31 +49,41 @@ function displaySaved(bookmarksCollection) {
                     </div>
                 </div>
             `;
-    
-    
+
             contentDiv.appendChild(bookmarkCard);
-    
+
             console.log(`#${jobId}` + " doc ID")
             // Attach event listener to the bookmark icon
-            
+
             // let bookmarksRef = db.collection("users").doc(firebase.auth().currentUser.uid).collection("bookmarks");
             // bookmarksRef.doc(doc.job_id).get().then(docSnapshot => {
             //     if (docSnapshot.exists) {
             //         bookmarkCard.getElementsByTagName("i")[0].innerHTML = "bookmark";
             //     }
             // });
-    
+
             // bookmarkCard.querySelector('i').onclick = () => {
             //     // add if statement
             //     bookmarkCollection(currentUser);
             // };
 
-            bookmarkCard.querySelector('i').onclick = () => {
-                if (confirm("Are you sure you would like to remove this job from bookmarks? This job won't be able to bookmark this job through the bookmarks page:")) {
-                    removeBookmark(jobId);
-                }
-            }
-    
+            // Attach event listener to the bookmark icon
+            bookmarkCard.querySelector('i').addEventListener('click', () => {
+                swal({
+                    title: "Are you sure?",
+                    text: "You will not be able to recover this bookmark through the bookmarks page",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, remove it!",
+                    closeOnConfirm: false
+                },
+                    function () {
+                        swal("Deleted!", "Your bookmark has been removed.", "success");
+                        removeBookmark(jobId);
+                    });
+            });
+
         });
     })
 }
@@ -88,11 +98,17 @@ function removeBookmark(jobId) {
             // Add the job to the "bookmarks" subcollection
             const bookmarkIcon = document.getElementById(jobId);
 
-            
+
             console.log("The bookmark is getting deleted.");
             bookmarksRef.doc(jobId).delete();
-                
+
             bookmarkIcon.getElementsByClassName(jobId)[0].remove();
+
+            // Find the card element by jobId and hide it
+            let cardElement = document.getElementById(jobId);
+            if (cardElement) {
+                cardElement.style.display = "none";  // Hide the element
+            }
 
             console.log("Confirm works");
 

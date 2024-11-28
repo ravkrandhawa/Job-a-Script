@@ -172,6 +172,6 @@ img[alt="profile-icon"] {
     width: 150px; 
 }
 
-
-
-
+.material-icons{
+    cursor: pointer;
+}
