@@ -32,6 +32,76 @@
   <!-- Link to styles of your own -->
   <!-- <link rel="stylesheet" href="./styles/style.css"> -->
 
+  <!-- HTML !-->
+  <style>
+    /* CSS */
+    .button-19 {
+      appearance: button;
+      background-color: #b38102;
+      border: solid transparent;
+      border-radius: 16px;
+      border-width: 0 0 4px;
+      box-sizing: border-box;
+      color: #031f7a; 
+      cursor: pointer;
+      display: inline-block;
+      font-family: din-round, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .8px;
+      line-height: 20px;
+      margin: 0;
+      outline: none;
+      overflow: visible;
+      padding: 13px 16px;
+      text-align: center;
+      /* text-transform: uppercase; */
+      touch-action: manipulation;
+      transform: translateZ(0);
+      transition: filter .2s;
+      user-select: none;
+      -webkit-user-select: none;
+      vertical-align: middle;
+      white-space: nowrap;
+      width: 100%;
+      text-decoration: none;
+    }
+
+    .button-19:after {
+      background-clip: padding-box;
+      background-color: #edbc40;
+      border: solid transparent;
+      border-radius: 16px;
+      border-width: 0 0 4px;
+      bottom: -4px;
+      content: "";
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: -1;
+    }
+
+    .button-19,
+    .button-19:focus {
+      user-select: auto;
+    }
+
+    .button-19:hover:not(:disabled) {
+      filter: brightness(1.1);
+      -webkit-filter: brightness(1.1);
+    }
+
+    .button-19:disabled {
+      cursor: auto;
+    }
+
+    .button-19:active {
+      border-width: 4px 0 0;
+      background: none;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -46,7 +116,15 @@
     <img alt="logo" src="./images/JavaScript-logo.png" />
   </div>
 
-  <div id="container">
+  <div id="main-menu">
+
+    <a href="./saved.html" class="button-19">Bookmarks</a>
+    <a href="./profile.html" class="button-19">Update Profile</a>
+    <a href="./questionnaire.html" class="button-19">Fill Out Questionnaire</a>
+    <a href="./index.html" id="main-menu-selection" class="button-19">Logout</a>
+
+  </div>
+<!-- 
     <div id="main-menu" class="row row-cols-1 row-cols-md-2 g-4">
       <div class="col">
         <div class="card text-bg-warning text-center card h-400">
@@ -89,8 +167,8 @@
         </div>
         </a>
       </div>
-    </div>
-  </div>
+    </div> -->
+
 
 
 

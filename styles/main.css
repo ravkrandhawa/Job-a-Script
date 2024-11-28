@@ -2,7 +2,7 @@
 #container {
     display: grid; 
     grid-template-rows: 5vh auto auto; 
-    grid-template-columns: 25vw 25vw 25vw 25vw; 
+    grid-template-columns: 10vw auto auto 10vw; 
 }
 
 #navbarPlaceholder {
@@ -13,7 +13,14 @@
 #main-menu {
     grid-column: 2 / span 2; 
     grid-row: 2; 
-    padding-top: 5px; 
+    padding-top: 40px; 
+    padding-left: 20px; 
+    padding-right: 20px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    gap: 20px; 
 }
 
 #logo-div {
@@ -22,17 +29,6 @@
     display: flex; 
     justify-content: center;
     align-items: center;
-}
-
-.card a {
-    text-decoration: none;
-    color: #031f7a; 
-    transition: color 0.3s ease, text-decoration 0.3s ease; 
-}
-
-.card a:hover {
-    color: #057343; 
-    text-decoration: underline; 
 }
 
 img[alt=logo] {
