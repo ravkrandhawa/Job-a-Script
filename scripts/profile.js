@@ -42,6 +42,12 @@ function saveUserInfo() {
         linkedin: userLinkedIn
     })
         .then(() => {
+            swal({
+                title: "Edits saved!",
+                text: "Your edits have been sucessfully saved.",
+                type: "success",
+                confirmButtonColor: "#25446a"  // Second alert confirm button color
+            });
             console.log("Document successfully updated");
         }
         )

@@ -1,375 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <title>Job-a-script</title>
-        <meta name="comp1800 template" content="My 1800 App">
+<head>
+    <title>Job-a-script</title>
+    <meta name="comp1800 template" content="My 1800 App">
 
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Bootstrap Library CSS CDN go here -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous">
-        <!-- Boostrap Library JS CDN  go here -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous">
+    <!-- Bootstrap Library CSS CDN go here -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Boostrap Library JS CDN  go here -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
         </script>
 
-        <!-------------------------------------------------------->
-        <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
-        <!-------------------------------------------------------->
-        <script
-            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script
-            src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-        <script
-            src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-        <script
-            src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-        <script
-            src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-        <link type="text/css" rel="stylesheet"
-            href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-        <script
-            src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <!-------------------------------------------------------->
+    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+    <!-------------------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
-        <!-- Other libraries go here -->
+    <!-- Other libraries go here -->
 
-        <!-- Link to styles of your own -->
-        <link rel="stylesheet" href="./styles/style.css">
-        <link rel="stylesheet" href="./styles/questionnaire.css">
+    <!-- This imports the sweetalerts library-->
+    <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
 
-    </head>
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/questionnaire.css">
 
-    <body>
+</head>
 
-        <!-- Navbar -->
-        <nav id="navbarPlaceholder"></nav>
+<body>
 
-        <div class="container mt-4">
-            <!-- Header -->
-            <h1 class="text-center mb-4">Job Preference Questionnaire</h1>
+    <!-- Navbar -->
+    <nav id="navbarPlaceholder"></nav>
 
-            <!-- Experience Question -->
-            <div class="card mb-3">
-                <div class="card-body">
-                    <p class="card-title fw-bold">How many years of experience
-                        do you have?</p>
-                    <form id="q1">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio"
-                                value="No years of experience." id="experience1"
-                                name="experience">
-                            <label class="form-check-label" for="experience1">No
-                                years of experience.</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio"
-                                value="1 - 2 Years of experience."
-                                id="experience2"
-                                name="experience">
-                            <label class="form-check-label" for="experience2">1
-                                - 2 Years of experience.</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio"
-                                value="3 - 5 Years of experience."
-                                id="experience3"
-                                name="experience">
-                            <label class="form-check-label" for="experience3">3
-                                - 5 Years of experience.</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio"
-                                value="5+ Years of experience." id="experience4"
-                                name="experience">
-                            <label class="form-check-label" for="experience4">5+
-                                Years of experience.</label>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <div class="container mt-4">
+        <!-- Header -->
+        <h1 class="text-center mb-4">Job Preference Questionnaire</h1>
 
-            <!-- Languages Question -->
-            <div class="card mb-3">
-                <div class="card-body">
-                    <p class="card-title fw-bold">What languages are you
-                        familiar with?</p>
-                    <form id="q2">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="Python" id="languages1"
-                                name="languagesA">
-                            <label class="form-check-label"
-                                for="languages1">Python</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="Java" id="languages2" name="languagesB">
-                            <label class="form-check-label"
-                                for="languages2">Java</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="CSS" id="languages3" name="languagesC">
-                            <label class="form-check-label"
-                                for="languages3">CSS</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="HTML" id="languages4" name="languagesD">
-                            <label class="form-check-label"
-                                for="languages4">HTML</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="JavaScript" id="languages5"
-                                name="languagesE">
-                            <label class="form-check-label"
-                                for="languages5">JavaScript</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="R" id="languages6" name="languagesF">
-                            <label class="form-check-label"
-                                for="languages6">R</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="Lua" id="languages7" name="languagesG">
-                            <label class="form-check-label"
-                                for="languages7">Lua</label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Salary Expectation Question -->
-            <div class="card mb-3">
-                <div class="card-body">
-                    <p class="card-title fw-bold">What is your minimum salary
-                        expectation?</p>
-                    <form id="q3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio"
-                                value="$50,000+" id="salary1" name="salary">
-                            <label class="form-check-label"
-                                for="salary1">$50,000+</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio"
-                                value="$60,000+" id="salary2" name="salary">
-                            <label class="form-check-label"
-                                for="salary2">$60,000+</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio"
-                                value="$70,000+" id="salary3" name="salary">
-                            <label class="form-check-label"
-                                for="salary3">$70,000+</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio"
-                                value="$80,000+" id="salary4" name="salary">
-                            <label class="form-check-label"
-                                for="salary4">$80,000+</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio"
-                                value="$90,000+" id="salary5" name="salary">
-                            <label class="form-check-label"
-                                for="salary5">$90,000+</label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Job Type Question -->
-            <div class="card mb-3">
-                <div class="card-body">
-                    <p class="card-title fw-bold">What type(s) of jobs are you
-                        looking for?</p>
-                    <form id="q4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="Full-time" id="jobType1"
-                                name="full-time">
-                            <label class="form-check-label"
-                                for="jobType1">Full-time</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="Part-time" id="jobType2"
-                                name="part-time">
-                            <label class="form-check-label"
-                                for="jobType2">Part-time</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="Contract" id="jobType3" name="contract">
-                            <label class="form-check-label"
-                                for="jobType3">Contract</label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Work Environment Question -->
-            <div class="card mb-3">
-                <div class="card-body">
-                    <p class="card-title fw-bold">What kind of work
-                        environment(s) do you prefer?</p>
-                    <form id="q5">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="Remote" id="env1" name="remote">
-                            <label class="form-check-label"
-                                for="env1">Remote</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="Hybrid" id="env2" name="hybrid">
-                            <label class="form-check-label"
-                                for="env2">Hybrid</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="In-Person" id="env3" name="inPerson">
-                            <label class="form-check-label"
-                                for="env3">In-Person</label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Education Question -->
-            <div class="card mb-3">
-                <div class="card-body">
-                    <p class="card-title fw-bold">What is your educational
-                        level?</p>
-                    <form id="q6">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio"
-                                value="No relevant education." id="edu1"
-                                name="education">
-                            <label class="form-check-label" for="edu1">No
-                                relevant education</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio"
-                                value="Certification" id="edu2"
-                                name="education">
-                            <label class="form-check-label"
-                                for="edu2">Certification</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio"
-                                value="Diploma" id="edu3" name="education">
-                            <label class="form-check-label"
-                                for="edu3">Diploma</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio"
-                                value="Undergraduate degree" id="edu4"
-                                name="education">
-                            <label class="form-check-label"
-                                for="edu4">Undergraduate degree</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio"
-                                value="Master's degree" id="edu5"
-                                name="education">
-                            <label class="form-check-label" for="edu5">Master's
-                                degree</label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Frameworks Question -->
-            <div class="card mb-3">
-                <div class="card-body">
-                    <p class="card-title fw-bold">What frameworks are you
-                        familiar with?</p>
-                    <form id="q7">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="AWS" id="framework1" name="AWS">
-                            <label class="form-check-label"
-                                for="framework1">AWS</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="AJAX" id="framework2" name="AJAX">
-                            <label class="form-check-label"
-                                for="framework2">AJAX</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="Angular" id="framework3" name="Angular">
-                            <label class="form-check-label"
-                                for="framework3">Angular</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="Bootstrap" id="framework4"
-                                name="Bootstrap">
-                            <label class="form-check-label"
-                                for="framework4">Bootstrap</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="Blazor" id="framework5" name="Blazor">
-                            <label class="form-check-label"
-                                for="framework5">Blazor</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="Play Framework" id="framework6"
-                                name="playFramework">
-                            <label class="form-check-label"
-                                for="framework6">Play Framework</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="Others" id="framework7" name="Others">
-                            <label class="form-check-label"
-                                for="framework7">Others</label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Submit Button -->
-            <div class="text-center mt-4">
-                <button id="submitQuestionnaire" type="button"
-                    class="btn btn-primary btn-lg">Submit</button>
+        <!-- Experience Question -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <p class="card-title fw-bold">How many years of experience
+                    do you have?</p>
+                <form id="q1">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="No years of experience." id="experience1"
+                            name="experience">
+                        <label class="form-check-label" for="experience1">No
+                            years of experience.</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="1 - 2 Years of experience." id="experience2"
+                            name="experience">
+                        <label class="form-check-label" for="experience2">1
+                            - 2 Years of experience.</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="3 - 5 Years of experience." id="experience3"
+                            name="experience">
+                        <label class="form-check-label" for="experience3">3
+                            - 5 Years of experience.</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="5+ Years of experience." id="experience4"
+                            name="experience">
+                        <label class="form-check-label" for="experience4">5+
+                            Years of experience.</label>
+                    </div>
+                </form>
             </div>
         </div>
 
-        <!-- Footer -->
-        <nav id="footerPlaceholder"></nav>
+        <!-- Languages Question -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <p class="card-title fw-bold">What languages are you
+                    familiar with?</p>
+                <form id="q2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Python" id="languages1"
+                            name="languagesA">
+                        <label class="form-check-label" for="languages1">Python</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Java" id="languages2" name="languagesB">
+                        <label class="form-check-label" for="languages2">Java</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="CSS" id="languages3" name="languagesC">
+                        <label class="form-check-label" for="languages3">CSS</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="HTML" id="languages4" name="languagesD">
+                        <label class="form-check-label" for="languages4">HTML</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="JavaScript" id="languages5"
+                            name="languagesE">
+                        <label class="form-check-label" for="languages5">JavaScript</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="R" id="languages6" name="languagesF">
+                        <label class="form-check-label" for="languages6">R</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Lua" id="languages7" name="languagesG">
+                        <label class="form-check-label" for="languages7">Lua</label>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-        <!------------------------------>
-        <!-- Stuff for body goes here -->
+        <!-- Salary Expectation Question -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <p class="card-title fw-bold">What is your minimum salary
+                    expectation?</p>
+                <form id="q3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="$50,000+" id="salary1" name="salary">
+                        <label class="form-check-label" for="salary1">$50,000+</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="$60,000+" id="salary2" name="salary">
+                        <label class="form-check-label" for="salary2">$60,000+</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="$70,000+" id="salary3" name="salary">
+                        <label class="form-check-label" for="salary3">$70,000+</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="$80,000+" id="salary4" name="salary">
+                        <label class="form-check-label" for="salary4">$80,000+</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="$90,000+" id="salary5" name="salary">
+                        <label class="form-check-label" for="salary5">$90,000+</label>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-        <!---------------------------------------------->
-        <!-- Your own JavaScript functions go here    -->
-        <!---------------------------------------------->
+        <!-- Job Type Question -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <p class="card-title fw-bold">What type(s) of jobs are you
+                    looking for?</p>
+                <form id="q4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Full-time" id="jobType1"
+                            name="full-time">
+                        <label class="form-check-label" for="jobType1">Full-time</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Part-time" id="jobType2"
+                            name="part-time">
+                        <label class="form-check-label" for="jobType2">Part-time</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Contract" id="jobType3" name="contract">
+                        <label class="form-check-label" for="jobType3">Contract</label>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-        <!-- Link to scripts of your own -->
-        <script src="./scripts/firebaseAPI_BBY06.js"></script>
-        <script src="./scripts/skeleton.js"></script>
-        <script src="./scripts/script.js"></script>
-        <script src="./scripts/questionnaire.js"></script>
+        <!-- Work Environment Question -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <p class="card-title fw-bold">What kind of work
+                    environment(s) do you prefer?</p>
+                <form id="q5">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Remote" id="env1" name="remote">
+                        <label class="form-check-label" for="env1">Remote</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Hybrid" id="env2" name="hybrid">
+                        <label class="form-check-label" for="env2">Hybrid</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="In-Person" id="env3" name="inPerson">
+                        <label class="form-check-label" for="env3">In-Person</label>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-    </body>
+        <!-- Education Question -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <p class="card-title fw-bold">What is your educational
+                    level?</p>
+                <form id="q6">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="No relevant education." id="edu1"
+                            name="education">
+                        <label class="form-check-label" for="edu1">No
+                            relevant education</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="Certification" id="edu2" name="education">
+                        <label class="form-check-label" for="edu2">Certification</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="Diploma" id="edu3" name="education">
+                        <label class="form-check-label" for="edu3">Diploma</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="Undergraduate degree" id="edu4"
+                            name="education">
+                        <label class="form-check-label" for="edu4">Undergraduate degree</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="Master's degree" id="edu5" name="education">
+                        <label class="form-check-label" for="edu5">Master's
+                            degree</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Frameworks Question -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <p class="card-title fw-bold">What frameworks are you
+                    familiar with?</p>
+                <form id="q7">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="AWS" id="framework1" name="AWS">
+                        <label class="form-check-label" for="framework1">AWS</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="AJAX" id="framework2" name="AJAX">
+                        <label class="form-check-label" for="framework2">AJAX</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Angular" id="framework3" name="Angular">
+                        <label class="form-check-label" for="framework3">Angular</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Bootstrap" id="framework4"
+                            name="Bootstrap">
+                        <label class="form-check-label" for="framework4">Bootstrap</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Blazor" id="framework5" name="Blazor">
+                        <label class="form-check-label" for="framework5">Blazor</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Play Framework" id="framework6"
+                            name="playFramework">
+                        <label class="form-check-label" for="framework6">Play Framework</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Others" id="framework7" name="Others">
+                        <label class="form-check-label" for="framework7">Others</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center mt-4">
+            <button id="submitQuestionnaire" type="button" class="btn btn-primary btn-lg">Submit</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <nav id="footerPlaceholder"></nav>
+
+    <!------------------------------>
+    <!-- Stuff for body goes here -->
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+
+    <!-- Link to scripts of your own -->
+    <script src="./scripts/firebaseAPI_BBY06.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/questionnaire.js"></script>
+
+</body>
 
 </html>

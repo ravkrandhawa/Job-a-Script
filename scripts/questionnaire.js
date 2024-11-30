@@ -64,4 +64,24 @@ function storeRadioAnswers() {
 }
 
 // Attach the function to the submit button
-document.querySelector('#submitQuestionnaire').addEventListener('click', storeRadioAnswers);
+document.querySelector('#submitQuestionnaire').addEventListener('click', () => {
+    swal({
+        title: "Would you like to double check?",
+        text: "If not certain than feel free to review your answers again.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, submit!",
+        closeOnConfirm: false
+    },
+        function () {
+            swal({
+                title: "Answers Submited",
+                text: "You have successfully completed the questionnaire!",
+                type: "success",
+                showConfirmButton: false,
+                timer: 1000  // Closes after 1 seconds
+            });
+            storeRadioAnswers();
+        });
+});

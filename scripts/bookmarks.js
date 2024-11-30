@@ -79,7 +79,12 @@ function displaySaved(bookmarksCollection) {
                     closeOnConfirm: false
                 },
                     function () {
-                        swal("Deleted!", "Your bookmark has been removed.", "success");
+                        swal({
+                            title: "Deleted!",
+                            text: "Your bookmark has been removed.",
+                            type: "success",
+                            confirmButtonColor: "#25446a"  // Second alert confirm button color
+                        });
                         removeBookmark(jobId);
                     });
             });
