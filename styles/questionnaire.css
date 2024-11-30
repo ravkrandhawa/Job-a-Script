@@ -20,7 +20,7 @@ h1 {
     margin-left: 10px;
 }
 
-button {
+#submitQuestionnaire {
     margin-top: 20px;
     display: block;
     width: 100%;
@@ -30,7 +30,7 @@ button {
     border-radius: 5px;
 }
 
-button:hover {
+#submitQuestionnaire:hover {
     background-color: #0056b3;
 }
 
