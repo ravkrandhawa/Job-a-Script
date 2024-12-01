@@ -86,6 +86,16 @@ function displayListings(listingsWithScores) {
     listingsWithScores.forEach(item => {
         const doc = item.listing;
         const matchScore = item.matchScore;
+
+        let matchScoreColor; 
+        if (matchScore >= 7) {
+            matchScoreColor = 'green'; 
+        } else if (matchScore >= 5) {
+            matchScoreColor = '#edbc40;'
+        } else {
+            matchScoreColor = 'red'; 
+        }
+
         let jobCard = document.createElement("div");
         jobCard.innerHTML = `
             <div class="col-md-4 mb-4" style="border: solid; border-radius: 10px; border-color: lightgrey">
@@ -95,7 +105,7 @@ function displayListings(listingsWithScores) {
                         <h5 id="${doc.title}" class="card-title">${doc.title}</h5>
                         <p id="${doc.company_name}" class="card-text"><strong>Company:</strong> ${doc.company_name}</p>
                         <p id="${doc.location}" class="card-text"><strong>Location:</strong> ${doc.location}</p>
-                        <p id="${matchScore}" class="card-text"><strong>Match Score:</strong> ${matchScore} (out of 10)</p>
+                        <p id="${matchScore}" class="card-text"><strong>Match Score:</strong><span style="color: ${matchScoreColor};"> ${matchScore} (out of 10)</span></p>
                         <a id="${doc.share_link}" href="${doc.share_link}" target="_blank">Apply Now</a>
                         <i id="${doc.company_name}" class="material-icons float-end ${doc.job_id}">bookmark_border</i>
                     </div>

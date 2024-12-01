@@ -32,6 +32,15 @@ function displaySaved(bookmarksCollection) {
             var description = doc.data().description;
             var thumbnail = doc.data().thumbnail;
 
+            let matchScoreColor; 
+            if (matchScore >= 7) {
+                matchScoreColor = 'green'; 
+            } else if (matchScore >= 5) {
+                matchScoreColor = '#edbc40;'
+            } else {
+                matchScoreColor = 'red'; 
+            }
+
             let bookmarkCard = document.createElement("div");
             bookmarkCard.innerHTML = `
                 <div id="${jobId}" class="col-md-4 mb-4" style="border: solid; border-radius: 10px; border-color: lightgrey">
@@ -41,8 +50,7 @@ function displaySaved(bookmarksCollection) {
                             <h5 id="${title}" class="card-title">${title}</h5>
                             <p id="${companyName}" class="card-text"><strong>Company:</strong> ${companyName}</p>
                             <p id="${location}" class="card-text"><strong>Location:</strong> ${location}</p> 
-                            <p id="${matchScore}" class="card-text"><strong>Match Score:</strong> ${matchScore} (out of 10)</p>
-                            <a id="${shareLink}" href="${shareLink}" target="_blank">Apply Now</a>
+                            <p id="${matchScore}" class="card-text"><strong>Match Score:</strong><span style="color: ${matchScoreColor};"> ${matchScore} (out of 10)</span></p>                            <a id="${shareLink}" href="${shareLink}" target="_blank">Apply Now</a>
                             <i id="${companyName}" class="material-icons float-end ${jobId}">bookmark</i>
                         </div>
                     </div>
