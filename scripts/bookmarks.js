@@ -41,9 +41,8 @@ function displaySaved(bookmarksCollection) {
                             <h5 id="${title}" class="card-title">${title}</h5>
                             <p id="${companyName}" class="card-text"><strong>Company:</strong> ${companyName}</p>
                             <p id="${location}" class="card-text"><strong>Location:</strong> ${location}</p> 
-                            <p id="${description}" class="card-text">${description ? description.substring(0, 100) + '...' : ''}</p>
-                            <p id="${matchScore}" class="card-text"><strong>Match Score:</strong> ${matchScore}</p>
-                            <a id="${shareLink}" href="${shareLink}" target="_blank" class="btn btn-primary">Apply Now</a>
+                            <p id="${matchScore}" class="card-text"><strong>Match Score:</strong> ${matchScore} (out of 10)</p>
+                            <a id="${shareLink}" href="${shareLink}" target="_blank">Apply Now</a>
                             <i id="${companyName}" class="material-icons float-end ${jobId}">bookmark</i>
                         </div>
                     </div>

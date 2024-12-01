@@ -95,9 +95,8 @@ function displayListings(listingsWithScores) {
                         <h5 id="${doc.title}" class="card-title">${doc.title}</h5>
                         <p id="${doc.company_name}" class="card-text"><strong>Company:</strong> ${doc.company_name}</p>
                         <p id="${doc.location}" class="card-text"><strong>Location:</strong> ${doc.location}</p>
-                        <p id="${doc.description}" class="card-text">${doc.description ? doc.description.substring(0, 100) + '...' : ''}</p>
-                        <p id="${matchScore}" class="card-text"><strong>Match Score:</strong> ${matchScore}</p>
-                        <a id="${doc.share_link}" href="${doc.share_link}" target="_blank" class="btn btn-primary">Apply Now</a>
+                        <p id="${matchScore}" class="card-text"><strong>Match Score:</strong> ${matchScore} (out of 10)</p>
+                        <a id="${doc.share_link}" href="${doc.share_link}" target="_blank">Apply Now</a>
                         <i id="${doc.company_name}" class="material-icons float-end ${doc.job_id}">bookmark_border</i>
                     </div>
                 </div>
