@@ -70,7 +70,7 @@ document.querySelector('#submitQuestionnaire').addEventListener('click', () => {
         text: "If not certain than feel free to review your answers again.",
         type: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
+        confirmButtonColor: "#25446a",
         confirmButtonText: "Yes, submit!",
         closeOnConfirm: false
     },
