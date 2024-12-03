@@ -57,7 +57,7 @@
     border-radius: 10px; 
     padding: 6px;
     text-align: left; /* Align text inside the span to the left */
-    margin-left: 182px; 
+    margin-left: 0px; 
     min-width: 240px; 
     max-width: 240px; 
     white-space: normal;
@@ -89,8 +89,8 @@
 } */
 
 img[alt="profile-icon"] {
-    position: absolute; 
-    top: 70px;  
+    position: relative; 
+    top: 0px;  
     height: 150px; 
     width: 150px; 
 }
@@ -98,7 +98,6 @@ img[alt="profile-icon"] {
 .material-icons{
     cursor: pointer;
 }
-
 
 .card a {
     appearance: button;
