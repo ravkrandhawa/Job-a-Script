@@ -1,0 +1,30 @@
+/* INDEX.HTML STYLING */
+/* Create a horizontal rainbow gradient animation */
+@keyframes horizontalRainbowGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Apply the horizontal gradient animation to the button */
+.rainbow-button {
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 400% 100%;
+    color: white;
+    border: none;
+    animation: horizontalRainbowGradient 3s ease infinite;
+    transition: transform 0.2s ease;
+}
+
+/* Add a hover effect for a subtle zoom */
+.rainbow-button:hover {
+    transform: scale(1.05);
+}

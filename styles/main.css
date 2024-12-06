@@ -1,41 +1,103 @@
 /* STYLING FOR MAIN.HTML */
 #container {
-    display: grid; 
-    grid-template-rows: 5vh auto auto; 
-    grid-template-columns: 10vw auto auto 10vw; 
+    display: grid;
+    grid-template-rows: 5vh auto auto;
+    grid-template-columns: 10vw auto auto 10vw;
 }
 
 #navbarPlaceholder {
-    grid-column: 1 / span 4; 
-    grid-row: 1 / span 1; 
+    grid-column: 1 / span 4;
+    grid-row: 1 / span 1;
 }
 
 #main-menu {
-    grid-column: 2 / span 2; 
-    grid-row: 2; 
-    padding-top: 40px; 
-    padding-left: 20px; 
-    padding-right: 20px; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
+    grid-column: 2 / span 2;
+    grid-row: 2;
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 20px; 
+    gap: 20px;
 }
 
 #logo-div {
-    grid-column: 2 / span 2; 
-    grid-row: 2 / span 1; 
-    display: flex; 
+    grid-column: 2 / span 2;
+    grid-row: 2 / span 1;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
 img[alt=logo] {
-    height: 300px; 
-    width: 300px; 
+    height: 300px;
+    width: 300px;
 }
 
+.button-19 {
+    appearance: button;
+    background-color: #b38102;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #031f7a;
+    cursor: pointer;
+    display: inline-block;
+    font-family: din-round, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 13px 16px;
+    text-align: center;
+    /* text-transform: uppercase; */
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 100%;
+    text-decoration: none;
+}
 
+.button-19:after {
+    background-clip: padding-box;
+    background-color: #edbc40;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
 
+.button-19,
+.button-19:focus {
+    user-select: auto;
+}
 
+.button-19:hover:not(:disabled) {
+    filter: brightness(1.1);
+    -webkit-filter: brightness(1.1);
+}
+
+.button-19:disabled {
+    cursor: auto;
+}
+
+.button-19:active {
+    border-width: 4px 0 0;
+    background: none;
+}
