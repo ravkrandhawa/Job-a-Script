@@ -1,7 +1,3 @@
-//---------------------------------
-// Your own functions here
-//---------------------------------
-
 
 //------------------------------------------------
 // Call this function when the "logout" button is clicked
