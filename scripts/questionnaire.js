@@ -1,4 +1,8 @@
 // Function to store radio button and checkbox answers
+// We individually attacked values to each of the radio buttons and when the user
+// clicks on one of them they are then checked for and upon clicking submit they are
+// used to set the values of those fields in firestore. If user don't pick a value than
+// the value stored will be an empty string.
 function storeRadioAnswers() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -63,7 +67,9 @@ function storeRadioAnswers() {
     });
 }
 
-// Attach the function to the submit button
+// Attach the function to the submit button. Produces a popup asking user to
+// confirm their decision to prevent users from having to redo the whole questionnaire
+// incase they rememberd to check another value.
 document.querySelector('#submitQuestionnaire').addEventListener('click', () => {
     swal({
         title: "Would you like to double check?",

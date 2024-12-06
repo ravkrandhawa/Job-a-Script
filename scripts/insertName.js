@@ -1,3 +1,6 @@
+// This function adds personlization to our app by displaying the name the user had saved in there name field
+// in the users uid document. Accessing it through there allows user to see different ones when users change it
+// throught the profile page.
 function insertNameFromFirestore() {
     // Check if the user is logged in:
     firebase.auth().onAuthStateChanged(user => {

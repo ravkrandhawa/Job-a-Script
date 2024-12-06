@@ -8,12 +8,16 @@ const port = 8000;
 
 app.use(cors()); //Enable CORS for all routes
 
+// Stores all the serpAPI data into this local server so we can than
+// access this information later on
 app.get('/',(req, res) => {
 
     getJson({
-        //userID: "to be filled",
+        // Using the google_jobs search engine
         engine: "google_jobs",
+        // The type of jobs we want the server to gather
         q: "Developer careers",
+        // The location we want those jobs to locate from
         location: "Vancouver, British Columbia, Canada",
         api_key: process.env.API_KEY
     }, (json, error) => {
@@ -33,7 +37,7 @@ app.get('/',(req, res) => {
 
 });
 
+// Used to get display a message to the console to let us know the server is running.
 app.listen(port, () => {
     console.log(`Server running at http://127.0.0.1:${port}/`);
 });
-

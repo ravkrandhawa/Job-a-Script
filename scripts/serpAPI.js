@@ -1,3 +1,4 @@
+// Used to access serpAPI's data bank for real time data
 async function getData() {
     const url = "https://serpapi.com/search.json?q=Developer+careers&location=Austin,+Texas,+United+States";
     try {

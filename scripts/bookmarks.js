@@ -1,4 +1,6 @@
-//Function that calls everything needed for the main page  
+//Function that calls everything needed for the main page 
+// This way we don't have to call a bunch of functions and can instead do it all
+// in one step. This is faster for the system. 
 function doAll() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -15,7 +17,9 @@ function doAll() {
 }
 doAll();
 
-// Function to display job listings in the HTML content div
+// Function to display job listings in the HTML content div. This is done by getting
+// the firestore subcollection from the users uid document. These values are than attached
+// to variables which are than displyed onto the screen very similarly to the display_results page.
 function displaySaved(bookmarksCollection) {
     const contentDiv = document.getElementById('content');
     contentDiv.innerHTML = "";
@@ -23,6 +27,7 @@ function displaySaved(bookmarksCollection) {
     bookmarksCollection.get().then(allBookmarks => {
         allBookmarks.forEach(doc => {
 
+            // Values taken from firestore fields
             var title = doc.data().title;
             var companyName = doc.data().company_name;
             var shareLink = doc.data().share_link;
@@ -32,6 +37,7 @@ function displaySaved(bookmarksCollection) {
             var description = doc.data().description;
             var thumbnail = doc.data().thumbnail;
 
+            // Match score colorization to give a visual impact to our users
             let matchScoreColor; 
             if (matchScore >= 7) {
                 matchScoreColor = 'green'; 
@@ -41,6 +47,7 @@ function displaySaved(bookmarksCollection) {
                 matchScoreColor = 'red'; 
             }
 
+            // Prints the cards on the screen using html tags and aslo makes it unique using a loop system
             let bookmarkCard = document.createElement("div");
             bookmarkCard.innerHTML = `
                 <div id="${jobId}" class="col-md-4 mb-4" style="border: solid; border-radius: 10px; border-color: lightgrey">
@@ -60,21 +67,10 @@ function displaySaved(bookmarksCollection) {
             contentDiv.appendChild(bookmarkCard);
 
             console.log(`#${jobId}` + " doc ID")
-            // Attach event listener to the bookmark icon
-
-            // let bookmarksRef = db.collection("users").doc(firebase.auth().currentUser.uid).collection("bookmarks");
-            // bookmarksRef.doc(doc.job_id).get().then(docSnapshot => {
-            //     if (docSnapshot.exists) {
-            //         bookmarkCard.getElementsByTagName("i")[0].innerHTML = "bookmark";
-            //     }
-            // });
-
-            // bookmarkCard.querySelector('i').onclick = () => {
-            //     // add if statement
-            //     bookmarkCollection(currentUser);
-            // };
-
-            // Attach event listener to the bookmark icon
+            
+            // This is the event listener for to bookmark icon to remove a bookmark from the
+            // users subcollection. Also implemeneted sweetalerts to make sure users can't make
+            // mistakes on accident.
             bookmarkCard.querySelector('i').addEventListener('click', () => {
                 swal({
                     title: "Are you sure?",
@@ -100,6 +96,9 @@ function displaySaved(bookmarksCollection) {
     })
 }
 
+// This is the function that removes bookmarks. This is activated throught an 
+// event listener. It goes into the bookmarks subcollection and deleted that job's
+// document. It also immeditally removes it from the screen so users get immediate feedback of their action,
 function removeBookmark(jobId) {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {

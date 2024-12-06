@@ -60,6 +60,8 @@ function userDataToArray() {
 }
 
 // Function to fetch job data, calculate match scores, sort, and display job listings
+// It uses the fetch api built into javascript to access the data from the server we
+// are loading all the information from.
 function fetchAndDisplayJobs(parsedUserData) {
     fetch('http://127.0.0.1:8000')
         .then(response => response.json())
@@ -78,7 +80,8 @@ function fetchAndDisplayJobs(parsedUserData) {
         .catch(error => console.error('Error fetching data:', error));
 }
 
-// Function to display job listings in the HTML content div
+// Function to display job listings in the HTML content div. It gets all the information
+// from the fetched data and prints them as a string.
 function displayListings(listingsWithScores) {
     const contentDiv = document.getElementById('content');
     contentDiv.innerHTML = "";
@@ -87,6 +90,7 @@ function displayListings(listingsWithScores) {
         const doc = item.listing;
         const matchScore = item.matchScore;
 
+        // Match score colorization to give a visual impact to our users
         let matchScoreColor; 
         if (matchScore >= 7) {
             matchScoreColor = 'green'; 
@@ -96,6 +100,7 @@ function displayListings(listingsWithScores) {
             matchScoreColor = 'red'; 
         }
 
+        // Prints the cards on the screen using html tags and aslo makes it unique using a loop system
         let jobCard = document.createElement("div");
         jobCard.innerHTML = `
             <div class="col-md-4 mb-4" style="border: solid; border-radius: 10px; border-color: lightgrey">
@@ -126,8 +131,8 @@ function displayListings(listingsWithScores) {
             }
         });
 
+        // This adds an even listener to the i tags in the job cards
         jobCard.querySelector('i').onclick = () => {
-            // add if statement
             bookmarkCollection(doc, matchScore);
         };
 
@@ -137,16 +142,17 @@ function displayListings(listingsWithScores) {
 // Run the userDataToArray function to start.
 userDataToArray();
 
+// This function adds that job card and all the information from it to 
+// a firestore subcollection called bookmarks which is located in the users uid document.
+// This information has to stored in firestore since the jobs are taken from a api that refreshs
+// after a certain amount of time. This function is accessed through an event listener.
 function bookmarkCollection(doc, matchScore) {
     firebase.auth().onAuthStateChanged(user => {
         console.log("Authentication")
         if (user) {
-            // This are variables to get the id data that should be stored in firestore
-            // let thumbnail = document.querySelector('#${doc.thumbnail}');
+            
             console.log(doc)
             let thumbnail = doc.thumbnail;
-            // let companyName = document.querySelector('#${doc.company_name}');
-            // let shareLink = document.querySelector('#${doc.share_link}');
 
             console.log(db.collection("users").doc(user.uid));
 
