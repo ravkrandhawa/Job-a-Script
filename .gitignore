@@ -3,4 +3,5 @@
 node_modules/
 .vscode/
 .env
+scripts/firebaseAPI_BBY06.js
 
