@@ -1,3 +1,5 @@
+import {app, db} from './firebaseAPI_BBY06.js';
+
 // Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
