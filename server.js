@@ -4,7 +4,7 @@ require('dotenv').config()
 const { getJson } = require("serpapi");
 
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 app.use(cors()); //Enable CORS for all routes
 
@@ -38,6 +38,6 @@ app.get('/',(req, res) => {
 });
 
 // Used to get display a message to the console to let us know the server is running.
-app.listen(port, () => {
-    console.log(`Server running at http://127.0.0.1:${port}/`);
+app.listen(port,"0.0.0.0",() => {
+    console.log(`Server running at http://0.0.0.0:${port}/`);
 });
