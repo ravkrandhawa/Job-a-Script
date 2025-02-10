@@ -63,7 +63,7 @@ function userDataToArray() {
 // It uses the fetch api built into javascript to access the data from the server we
 // are loading all the information from.
 function fetchAndDisplayJobs(parsedUserData) {
-    fetch('http://127.0.0.1:8000')
+    fetch("https://job-a-script-production.up.railway.app/")
         .then(response => response.json())
         .then(data => {
             let listingsWithScores = data.map(doc => {
